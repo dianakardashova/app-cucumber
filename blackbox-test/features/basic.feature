@@ -47,3 +47,10 @@ Feature: Basic scenarios for application
       | fname | lname | num         | addr            |
       | Kate  | Green | 37775389993 | 10 Central Park |
     Then I should receive status code 201
+
+  Scenario: Check updating of contact ---> POSITIVE <---
+    Given I have an endpoint /contacts/2/?
+    When I send request PUT to this endpoint with data:
+      | fname | lname | num         | addr            |
+      | Kate  | Green | 37775389993 | 112 North Park  |
+    Then I should receive status code 204
