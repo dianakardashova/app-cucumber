@@ -40,3 +40,10 @@ Feature: Basic scenarios for application
       | surname | code | body |
       | Borill  | 200  | {"0":{"fname":"Kevin","lname":"Borrill","num":"01147589663","addr":"11 Whereever Park Road"}} |
       | James   | 200  | {"1":{"fname":"Jimmy","lname":"James","num":"01202927262","addr":"12 North Park Road"}}       |
+
+  Scenario: Check creation of new contact ---> POSITIVE <---
+    Given I have an endpoint /contacts/?
+    When I send request POST to this endpoint with data:
+      | fname | lname | num         | addr            |
+      | Kate  | Green | 37775389993 | 10 Central Park |
+    Then I should receive status code 201

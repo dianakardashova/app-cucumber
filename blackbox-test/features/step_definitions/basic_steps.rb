@@ -17,3 +17,9 @@ end
 Then(/^I should receive body (.*)$/) do |body|
   expect(@response.body).to eq body
 end
+
+When(/^I send request POST to this endpoint with data:$/) do |table|
+  array = table.hashes
+  array.each {|hash| @data = hash.to_json}
+  @response = Excon.post(@endpoint, :body => @data)
+end
