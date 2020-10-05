@@ -29,3 +29,7 @@ When(/^I send request PUT to this endpoint with data:$/) do |table|
   array.each {|hash| @data = hash.to_json}
   @response = Excon.put(@endpoint, :body => @data)
 end
+
+When(/^I send request DELETE to this endpoint$/) do
+  @response = Excon.delete(@endpoint)
+end
